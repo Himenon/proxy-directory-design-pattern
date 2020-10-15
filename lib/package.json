@@ -6,23 +6,16 @@
   "keywords": [
     "proxy directory"
   ],
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "types": "lib/esm/index.d.ts",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "esm/index.d.ts",
   "sideEffects": false,
-  "files": [
-    "CHANGELOG.md",
-    "lib",
-    "cjs",
-    "esm"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Himenon/proxy-directory-design-pattern.git"
   },
   "publishConfig": {
-    "access": "public",
-    "directory": "lib"
+    "access": "public"
   },
   "scripts": {
     "build": "run-s clean && run-p build:types build:cjs build:esm && run-p copy:types copy:changelog copy:packagejson copy:readme copy:license && run-s build:cherry-pick",

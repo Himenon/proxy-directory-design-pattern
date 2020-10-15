@@ -1,0 +1,7 @@
+{
+  "name": "@himenon/proxy-directory-design-pattern/PackageA",
+  "private": true,
+  "main": "../cjs/PackageA.js",
+  "module": "../esm/PackageA.js",
+  "types": "../types/PackageA.d.ts"
+}
