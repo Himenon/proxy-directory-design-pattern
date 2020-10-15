@@ -1,0 +1,57 @@
+{
+  "name": "@himenon/proxy-directory-design-pattern",
+  "description": "proxy directory pattern",
+  "version": "0.0.0",
+  "license": "MIT",
+  "keywords": [
+    "proxy directory"
+  ],
+  "main": "lib/cjs/index.js",
+  "module": "esm/index.js",
+  "types": "esm/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "CHANGELOG.md",
+    "lib",
+    "cjs",
+    "esm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Himenon/proxy-directory-design-pattern.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "lib"
+  },
+  "scripts": {
+    "build": "run-s clean && run-p build:types build:cjs build:esm && run-p copy:types copy:types:cjs copy:types:esm copy:changelog copy:packagejson copy:readme copy:license && run-s build:cherry-pick",
+    "build:types": "yarn tsc -d --emitDeclarationOnly --outDir types",
+    "build:cjs": "yarn babel ./src -x .es6,.js,.es,.jsx,.mjs,.ts,.tsx --out-dir ./lib/cjs --env-name cjs",
+    "build:esm": "yarn babel ./src -x .es6,.js,.es,.jsx,.mjs,.ts,.tsx --out-dir ./lib/esm --env-name esm",
+    "build:cherry-pick": "cherry-pick --cjs-dir ./cjs --esm-dir ./esm --cwd ./lib --input-dir ../src",
+    "clean": "rimraf lib cjs esm",
+    "copy:types": "cpx \"types/*.d.ts\" lib/types",
+    "copy:types:cjs": "cpx \"types/*.d.ts\" lib/cjs",
+    "copy:types:esm": "cpx \"types/*.d.ts\" lib/esm",
+    "copy:packagejson": "node ./bin/copy-package-json.js",
+    "copy:changelog": "cpx \"CHANGELOG.md\" lib",
+    "copy:license": "cpx \"LICENSE\" lib",
+    "copy:readme": "cpx \"README.md\" lib",
+    "release:github:registry": "yarn publish --registry https://npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}",
+    "release:npm:registry": "yarn publish"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.11.6",
+    "@babel/core": "7.11.6",
+    "@babel/preset-typescript": "7.10.4",
+    "@babel/runtime": "7.11.2",
+    "cherry-pick": "0.5.0",
+    "conventional-changelog-angular-all": "1.7.0",
+    "cpx": "1.5.0",
+    "lerna": "3.22.1",
+    "npm-run-all": "4.1.5",
+    "rimraf": "3.0.2",
+    "typescript": "4.0.3"
+  }
+}
