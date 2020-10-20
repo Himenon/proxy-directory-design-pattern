@@ -1,7 +1,7 @@
 {
   "name": "@himenon/proxy-directory-design-pattern",
   "description": "proxy directory pattern",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "keywords": [
     "proxy directory"
